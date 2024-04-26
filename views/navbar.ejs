@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navbar</title>
+    <Link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    
+    <div class="top-bar">
+        <button class="top-bar__nav-toggle hamburger" id="top-nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <a href="#" class="top-bar__brand">Avire</a>
+        <nav class="top-bar__nav collapsed" id="top-bar__nav">
+          <ul class="top-bar__nav-list ">
+            <li><a href="home">Home</a></li>
+            <li><a href="services">Services</a></li>
+            <li><a href="conctact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+<script>(function() {
+    if (document.querySelector("#top-nav-toggle")) {
+      var navToggle = document.querySelector("#top-nav-toggle");
+  
+      function watchNavClose(e) {
+        var topNav = document.querySelector(".top-bar");
+        if (!e.path.includes(topNav)) {
+          openCloseNav();
+          document.documentElement.removeEventListener("click", watchNavClose);
+        }
+      }
+  
+      function openCloseNav() {
+        var navToggle = document.querySelector("#top-nav-toggle");
+  
+        if (!navToggle.classList.contains("closed")) {
+          navToggle.classList.add("closed");
+          document.querySelector("#top-bar__nav").classList.remove("collapsed");
+          document.querySelector("html").addEventListener("click", watchNavClose);
+        } else {
+          navToggle.classList.remove("closed");
+          document.querySelector("#top-bar__nav").classList.add("collapsed");
+          document.documentElement.removeEventListener("click", watchNavClose);
+        }
+      }
+  
+      navToggle.addEventListener("click", openCloseNav);
+    }
+  })();
+  </script>    
+</body>
+</html>
